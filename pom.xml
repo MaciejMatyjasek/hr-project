@@ -19,4 +19,18 @@
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+
+    </dependencies>
 </project>
