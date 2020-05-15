@@ -28,10 +28,11 @@ Application
          SID: ORCLCDB
          PORT: 1521
  ```
+ 
 -  On the newly created connection, run statements contained in the ```createnewuser.sql``` file (username and password can be changed to any one before executing SQL commands) and ```schema.sql``` (in this order!). The files are located in the ```hr-project/docker``` directory.
 
 <h3>Caution!<p>
--If You already have oracle installed with given structure, just change ```url``` and  ```properties``` in ```DataSourceConfiguration.class```
+- If You already have oracle installed with given structure, just change ```url``` and  ```properties``` in ```DataSourceConfiguration.class```
 
 #Branch and commit structure 
 ```<TYPE>/<DESCRIPTION>```
