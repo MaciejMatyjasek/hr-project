@@ -2,12 +2,14 @@ package dao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import query.QueryConsts;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+import static query.QueryConst.SELECT_DEPARTMENT_ID_BY_DEPARTMENT_NAME;
+import static query.QueryConst.SELECT_EMPLOYEES_LAST_NAME_BY_DEP_NAME;
 
 public class EmployeesDao {
   static final Logger log = LoggerFactory.getLogger(EmployeesDao.class);
@@ -25,8 +27,7 @@ public class EmployeesDao {
     try (Connection con = DriverManager.getConnection(url, properties)) {
       long departmentId = getDepartmentId(departmentName, con);
 
-      PreparedStatement employeePs =
-          con.prepareStatement(QueryConsts.SELECT_EMPLOYEES_LAST_NAME_BY_DEP_NAME);
+      PreparedStatement employeePs = con.prepareStatement(SELECT_EMPLOYEES_LAST_NAME_BY_DEP_NAME);
       employeePs.setLong(1, departmentId);
       employeePs.setLong(2, departmentId);
       ResultSet employeesRs = employeePs.executeQuery();
@@ -41,8 +42,7 @@ public class EmployeesDao {
   }
 
   private long getDepartmentId(String departmentName, Connection con) throws SQLException {
-    PreparedStatement departmentPs =
-        con.prepareStatement("SELECT DEPARTMENT_ID FROM DEPARTMENTS WHERE DEPARTMENT_NAME = ?");
+    PreparedStatement departmentPs = con.prepareStatement(SELECT_DEPARTMENT_ID_BY_DEPARTMENT_NAME);
     departmentPs.setString(1, departmentName);
     ResultSet departmentRs = departmentPs.executeQuery();
     long departmentId;
